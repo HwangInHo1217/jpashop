@@ -13,7 +13,7 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
     private Order order;
     @Embedded
-    private Adress adress;
+    private Address address;
     @Enumerated(EnumType.STRING)
-    private DelivertStatus status;
+    private DeliveryStatus status;
 }

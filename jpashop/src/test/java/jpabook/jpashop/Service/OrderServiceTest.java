@@ -1,7 +1,7 @@
 package jpabook.jpashop.Service;
 
 import jakarta.persistence.EntityManager;
-import jpabook.jpashop.domain.Adress;
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
@@ -89,7 +89,7 @@ public class OrderServiceTest {
     private Member createMember(String name) {
         Member member = new Member();
         member.setName(name);
-        member.setAdress(new Adress("파주시","어디쯤","1505"));
+        member.setAdress(new Address("파주시","어디쯤","1505"));
         em.persist(member);
         return member;
     }

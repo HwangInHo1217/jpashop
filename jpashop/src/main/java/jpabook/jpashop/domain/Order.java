@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
@@ -63,7 +63,7 @@ public class Order {
     }
     //비즈니스 로직
     public void cancel(){
-        if(delivery.getStatus()==DelivertStatus.COMP){
+        if(delivery.getStatus()== DeliveryStatus.COMP){
             throw new IllegalStateException("배송 완료된 주문은 취소가 불가 합니다.");
         }
         this.setStatus(OrderStatus.CANCEL);

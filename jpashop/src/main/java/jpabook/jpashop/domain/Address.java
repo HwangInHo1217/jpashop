@@ -5,15 +5,15 @@ import lombok.Getter;
 
 @Embeddable
 @Getter
-public class Adress {
+public class Address {
 
     private  String city;
     private String street;
     private String zipcode;
-    protected Adress(){
+    protected Address(){
 
     }
-    public Adress(String city, String street, String zipcode){
+    public Address(String city, String street, String zipcode){
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
