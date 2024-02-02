@@ -1,9 +1,7 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
+@Getter @Setter
 @Table(name="orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
@@ -24,7 +22,7 @@ public class Order {
     @JoinColumn(name="member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

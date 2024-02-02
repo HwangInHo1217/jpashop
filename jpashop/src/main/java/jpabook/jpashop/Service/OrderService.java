@@ -50,6 +50,6 @@ public class OrderService {
     }
     //검색
      public List<Order> findOrder(OrderSearch orderSearch){
-         return orderRespository.findAll(orderSearch);
+         return orderRespository.findAllByString(orderSearch);
     }
 }
